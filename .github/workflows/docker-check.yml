@@ -1,16 +1,21 @@
 name: Docker Build Check
 
-# 當有代碼 push 到 main 分支時，觸發這個動作
 on:
   push:
     branches: [ "main" ]
 
 jobs:
   build:
-    runs-on: ubuntu-latest # 在雲端開一台 Linux 電腦
+    runs-on: ubuntu-latest
     steps:
       - name: 複製程式碼
         uses: actions/checkout@v4
+
+      - name: 安裝測試工具
+        run: pip install pytest
+
+      - name: 執行單元測試
+        run: pytest test_main.py
 
       - name: 嘗試打包 Docker Image
         run: docker build -t test-image .
