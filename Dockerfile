@@ -1,6 +1,6 @@
 # 1. 使用 Python 3.12 輕量版當底座
-#FROM python:3.12-slim
-FROM python:999.0
+FROM python:3.12-slim
+
 # 2. 設定容器內的工作目錄
 WORKDIR /app
 
